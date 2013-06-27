@@ -1,0 +1,8 @@
+{
+  "name": "<%= _.slugify(appname) %>",
+  "description": "<%= description%>",
+  "main": "dist/<%= slug%>.js",
+  "version": "0.0.0",
+  "dependencies": {}
+}
+

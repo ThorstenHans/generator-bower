@@ -1,0 +1,38 @@
+{
+  "name": "generator-bower",
+  "version": "0.0.0",
+  "description": "A generator for Yeoman",
+  "keywords": [
+    "yeoman-generator"
+  ],
+  "homepage": "https://github.com/ThorstenHans/generator-bower",
+  "bugs": "https://github.com/ThorstenHans/generator-bower/issues",
+  "author": {
+    "name": "Thorsten Hans",
+    "email": "thorsten.hans@gmail.com",
+    "url": "https://github.com/ThorstenHans"
+  },
+  "main": "app/index.js",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/ThorstenHans/generator-bower.git"
+  },
+  "scripts": {
+    "test": "mocha"
+  },
+  "dependencies": {
+    "yeoman-generator": "~0.12.0",
+    "underscore.string": "*"
+  },
+  "devDependencies": {
+    "mocha": "~1.10.0"
+  },
+  "engines": {
+    "node": ">=0.8.0"
+  },
+  "licenses": [
+    {
+      "type": "MIT"
+    }
+  ]
+}
