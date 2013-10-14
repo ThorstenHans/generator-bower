@@ -9,13 +9,13 @@ module.exports = (grunt) ->
 
   yeomanConfig =
     src: 'src'
-    dist : 'dist'
+    dist : './'
+
   grunt.initConfig
     yeoman: yeomanConfig
 
-    
     coffee:
-      dist:
+      build:
         files: [
           expand: true
           cwd: '<%%= yeoman.src %>'
@@ -23,19 +23,47 @@ module.exports = (grunt) ->
           dest: '<%%= yeoman.dist %>'
           ext: '.js'
         ]
+
     uglify:
       build:
         src: '<%%=yeoman.dist %>/<%=slug%>.js'
         dest: '<%%=yeoman.dist %>/<%=slug%>.min.js'
+
     mochaTest:
-      test: 
-        options: 
+      test:
+        options:
           reporter: 'spec'
           compilers: 'coffee:coffee-script'
         src: ['test/**/*.coffee']
 
+    connect:
+      all:
+        options:
+          port: 9000,
+          hostname: "localhost",
+          middleware: (connect, options) ->
+            return [
+              # Serve the project folder
+              connect.static(options.base)
+            ]
+    open:
+      all:
+        path: 'http://localhost:<%%= connect.all.options.port%>/examples/'
+    watch:
+      coffee:
+        files: ['src/*.coffee'],
+        tasks: ['coffee:build']
+
     grunt.registerTask 'default', [
       'mochaTest'
-      'coffee'
-      'uglify'
+      'coffee:build'
+      'uglify:build'
     ]
+
+    grunt.registerTask 'server', [
+      'coffee:build'
+      'connect',
+      'open'
+      'watch'
+    ]
+

@@ -1,6 +1,6 @@
 {
   "name": "generator-bower",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "A yeoman generator for bower components",
   "keywords": [
     "yeoman-generator",
@@ -23,7 +23,7 @@
     "test": "mocha --compilers coffee:coffee-script --reporter spec"
   },
   "dependencies": {
-    "yeoman-generator": "~0.12.0",
+    "yeoman-generator": "~0.13.0",
     "coffee-script": "~1.6.3",
     "underscore.string": "*"
   },
