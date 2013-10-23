@@ -15,7 +15,7 @@ var BowerGenerator = module.exports = function BowerGenerator(args, options, con
   this.pkg = JSON.parse(this.readFileAsString(path.join(__dirname, '../package.json')));
 };
 
-util.inherits(BowerGenerator, yeoman.generators.Base);
+util.inherits(BowerGenerator, yeoman.generators.NamedBase);
 
 BowerGenerator.prototype.askFor = function askFor() {
   var cb = this.async();
@@ -45,14 +45,15 @@ BowerGenerator.prototype.askFor = function askFor() {
 BowerGenerator.prototype.app = function app() {
   this.mkdir('test');
   this.mkdir('src');
-  this.mkdir('dist');
-  var componentName = _.slugify(this.bowerComponentName);
-  
-  this.template('_bower-component.coffee', 'src/' + componentName + '.coffee');
-  this.template('_bower-component-tests.coffee', 'test/' + componentName + '-tests.coffee');
+  this.mkdir('examples');
+  this.componentName = _.slugify(this.bowerComponentName);
+
+  this.template('_bower-component.coffee', 'src/' + this.componentName + '.coffee');
+  this.template('_bower-component-tests.coffee', 'test/' + this.componentName + '-tests.coffee');
   this.template('_Gruntfile.coffee', 'Gruntfile.coffee');
   this.copy('_package.json', 'package.json');
   this.template('_bower.json', 'bower.json');
+  this.copy('_index.html', 'examples/index.html');
 };
 
 BowerGenerator.prototype.projectfiles = function projectfiles() {

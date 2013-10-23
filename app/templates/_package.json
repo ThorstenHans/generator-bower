@@ -9,6 +9,9 @@
     "grunt" : "*",
     "grunt-contrib-coffee": "*",
     "grunt-contrib-uglify": "*",
+    "grunt-contrib-connect": "*",
+    "grunt-open": "*",
+    "grunt-contrib-watch": "*",
     "matchdep": "*",
     "grunt-mocha-test": "*"
   }
