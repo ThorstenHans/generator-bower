@@ -30,12 +30,17 @@ BowerGenerator.prototype.askFor = function askFor() {
   {
     name: 'description',
     message: 'Provide a short description for your component!'
+  },
+  {
+    name: 'livereloadPort',
+    message: 'Which port do you wish to use for livereloading?'
   }];
 
   this.prompt(prompts, function (props) {
     this.bowerComponentName = props.bowerComponentName;
     this.slug = _.slugify(this.bowerComponentName);
     this.description = props.description;
+    this.livereloadPort = props.livereloadPort;
     this.validVariableName = _.capitalize(_.slugify(this.bowerComponentName)).replace('-','');
 
     cb();
