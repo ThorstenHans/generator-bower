@@ -50,9 +50,13 @@ module.exports = (grunt) ->
       all:
         path: 'http://localhost:<%%= connect.all.options.port%>/examples/'
     watch:
+      options:
+        livereload: <%= livereloadPort %>
       coffee:
         files: ['src/*.coffee'],
         tasks: ['coffee:build']
+      html:
+        files: ['examples/*']
 
     grunt.registerTask 'default', [
       'mochaTest'
