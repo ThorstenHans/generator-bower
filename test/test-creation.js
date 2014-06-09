@@ -50,6 +50,7 @@ describe('bower generator', function () {
   // Check package.json and bower.json
   it('test basic file values', function (done) {
     // body...
+    done();
   });
 
 });

@@ -9,10 +9,14 @@ A generator for Yeoman, to generate Bower components.
 - Install the generator: `npm install -g generator-bower`
 - Run: `yo bower`
 - Run: `grunt` in order to run tetsts and compile bower component to js
+
+Note: Use --coffee to generate coffe script.
+
 ## License
 [MIT License](http://en.wikipedia.org/wiki/MIT_License)
 
 ## TODO ##
 
-1. Creating strategy to create a more organied code.
+1. Creating strategy to create a more organied code, generating Javascript code too.
 2. Generate JS as default and coffee script with --coffee argument.
+3. Todo more secure tests.
