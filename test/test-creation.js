@@ -1,9 +1,7 @@
-/*global describe, beforeEach, it*/
+/*global describe, beforeEach, it */
 'use strict';
-
-var path    = require('path');
+var path = require('path');
 var helpers = require('yeoman-generator').test;
-
 
 describe('bower generator', function () {
   beforeEach(function (done) {
@@ -23,15 +21,26 @@ describe('bower generator', function () {
     var expected = [
       // add files you expect to exist here.
       '.jshintrc',
-      '.editorconfig'
+      '.editorconfig',
+
+      'Gruntfile.coffee',
+      'bower.json',
+      'package.json',
+
+      'src/bower-mock.coffee',
+      'test/bower-mock-tests.coffee',
+
+      'examples/index.html'
     ];
 
     helpers.mockPrompt(this.app, {
-      'someOption': 'Y'
+      'bowerComponentName': 'bower mock',
+      'description': 'A Mock to test this package.',
+      'livereloadPort': 35000
     });
     this.app.options['skip-install'] = true;
     this.app.run({}, function () {
-      helpers.assertFiles(expected);
+      helpers.assertFile(expected);
       done();
     });
   });

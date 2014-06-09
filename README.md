@@ -1,7 +1,7 @@
 # Generator-bower
 [![Build Status](https://secure.travis-ci.org/ThorstenHans/generator-bower.png?branch=master)](https://travis-ci.org/ThorstenHans/generator-bower)
 
-A generator for Yeoman.
+A generator for Yeoman, to generate Bower components.
 
 ## Getting started
 - Make sure you have [yo](https://github.com/yeoman/yo) installed:

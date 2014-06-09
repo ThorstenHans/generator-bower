@@ -1,7 +1,22 @@
 {
   "name": "generator-bower",
-  "version": "0.0.3",
+  "version": "0.1.0",
   "description": "A yeoman generator for bower components",
+  "license": "MIT",
+  "author": {
+    "name": "Thorsten Hans",
+    "email": "thorsten.hans@gmail.com",
+    "url": "https://github.com/ThorstenHans"
+  },
+  "readmeFilename": "README.md",
+  "homepage": "https://github.com/ThorstenHans/generator-bower",
+  "bugs": {
+    "url": "https://github.com/ThorstenHans/generator-bower/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/ThorstenHans/generator-bower.git"
+  },
   "keywords": [
     "yeoman-generator",
     "bower",
@@ -9,40 +24,26 @@
     "coffee-script",
     "tdd"
   ],
-  "homepage": "https://github.com/ThorstenHans/generator-bower",
-  "bugs": {
-    "url": "https://github.com/ThorstenHans/generator-bower/issues"
-  },
-  "author": "Thorsten Hans <thorsten.hans@gmail.com> (https://github.com/ThorstenHans)",
   "main": "app/index.js",
-  "repository": {
-    "type": "git",
-    "url": "git://github.com/ThorstenHans/generator-bower.git"
+  "engines": {
+    "node": ">=0.10.0"
   },
-  "scripts": {
-    "test": "mocha --compilers coffee:coffee-script --reporter spec"
-  },
+  "files": [
+    "app"
+  ],
   "dependencies": {
-    "yeoman-generator": "~0.13.0",
-    "coffee-script": "~1.6.3",
-    "underscore.string": "*"
+    "chalk": "~0.4.0",
+    "underscore.string": "^2.3.3",
+    "yeoman-generator": "~0.16.0",
+    "yosay": "^0.1.0"
   },
   "devDependencies": {
-    "mocha": "~1.10.0",
-    "coffee-script": "~1.6.3"
+    "mocha": "*"
   },
-  "engines": {
-    "node": ">=0.8.0"
+  "peerDependencies": {
+    "yo": "~1.1.2"
   },
-  "licenses": [
-    {
-      "type": "MIT"
-    }
-  ],
-  "readmeFilename": "README.md",
-  "gitHead": "cde47af6223c7b36b88c9eb4a32bf414fb9653d9",
-  "directories": {
-    "test": "test"
-  },
-  "license": "BSD"
+  "scripts": {
+    "test": "mocha --reporter spec"
+  }
 }
