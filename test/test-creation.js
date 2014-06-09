@@ -4,6 +4,7 @@ var path = require('path');
 var helpers = require('yeoman-generator').test;
 
 describe('bower generator', function () {
+
   beforeEach(function (done) {
     helpers.testDirectory(path.join(__dirname, 'temp'), function (err) {
       if (err) {
@@ -18,6 +19,7 @@ describe('bower generator', function () {
   });
 
   it('creates expected files', function (done) {
+    // And check for them...
     var expected = [
       // add files you expect to exist here.
       '.jshintrc',
@@ -44,4 +46,10 @@ describe('bower generator', function () {
       done();
     });
   });
+
+  // Check package.json and bower.json
+  it('test basic file values', function (done) {
+    // body...
+  });
+
 });

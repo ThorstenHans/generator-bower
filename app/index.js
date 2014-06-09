@@ -7,7 +7,7 @@ var chalk = require('chalk');
 var _ = require('underscore.string');
 
 
-var BowerGenerator = yeoman.generators.Base.extend({
+var BowerGenerator = module.exports = yeoman.generators.Base.extend({
   /**
    * Initialization Function.
    */
@@ -35,6 +35,7 @@ var BowerGenerator = yeoman.generators.Base.extend({
       name: 'description',
       message: 'Provide a short description for your component!'
     }, {
+      // TODO: This must be optional.
       name: 'livereloadPort',
       message: 'Which port do you wish to use for livereloading?'
     }];
@@ -71,5 +72,3 @@ var BowerGenerator = yeoman.generators.Base.extend({
   }
 
 });
-
-module.exports = BowerGenerator;

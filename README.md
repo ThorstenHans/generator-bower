@@ -11,3 +11,8 @@ A generator for Yeoman, to generate Bower components.
 - Run: `grunt` in order to run tetsts and compile bower component to js
 ## License
 [MIT License](http://en.wikipedia.org/wiki/MIT_License)
+
+## TODO ##
+
+1. Creating strategy to create a more organied code.
+2. Generate JS as default and coffee script with --coffee argument.
