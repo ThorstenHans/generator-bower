@@ -14,14 +14,13 @@ var _ = require('underscore.string');
 var BowerGenerator = module.exports = function Appgenerator(args, options) {
   yeoman.generators.Base.apply(this, arguments);
 
-  // Coffee mode.
-  this.coffee = options.coffee;
-
   // After finishing.
   this.on('end', function () {
+    // Will instal dependencies if configured to it.
     if (!this.options['skip-install']) {
       this.installDependencies();
     }
+
   });
 
   this.pkg = require('../package.json');
@@ -37,24 +36,42 @@ BowerGenerator.prototype.askFor = function askFor() {
   this.log(yosay('Welcome to the marvelous Bower Components generator!'));
   this.log(chalk.blue.bgRed.bold('Lets Rock!!!'));
 
-  var prompts = [{
-    name: 'bowerComponentName',
-    message: "What's the name of your bower component?"
-  }, {
-    name: 'description',
-    message: 'Provide a short description for your component!'
-  }, {
-    // TODO: This must be optional.
-    name: 'livereloadPort',
-    message: 'Which port do you wish to use for livereloading?'
-  }];
+  // Promot - If Dummy, nothing will be asked to user
+  var prompts;
+  if (this.options.dummy !== true) {
+    var prompts = [{
+      name: 'bowerComponentName',
+      message: "What's the name of your bower component?"
+    }, {
+      name: 'description',
+      message: 'Provide a short description for your component!'
+    }, {
+      // TODO: This must be optional.
+      name: 'livereloadPort',
+      message: 'Which port do you wish to use for livereloading?'
+    }];
+  } else {
+    prompts = [];
+  }
 
+  // Promtp all questions, if not on dummy mode.
   this.prompt(prompts, function (props) {
-    this.bowerComponentName = props.bowerComponentName;
+
+    // dummy project will use default vaules
+    if (this.options.dummy === true) {
+      this.bowerComponentName = 'dummy';
+      this.description = 'Some dummy and clean componnent.';
+      // TODO: See about it!
+      this.livereloadPort = 35000;
+    } else {
+      this.bowerComponentName = props.bowerComponentName;
+      this.description = props.description;
+      // TODO: See about it!
+      this.livereloadPort = props.livereloadPort;
+    }
+
+    // ???
     this.slug = _.slugify(this.bowerComponentName);
-    this.description = props.description;
-    // TODO: See about it!!
-    this.livereloadPort = props.livereloadPort;
     this.validVariableName = _.capitalize(_.slugify(this.bowerComponentName)).replace('-', '');
 
     done();
@@ -67,23 +84,20 @@ BowerGenerator.prototype.app = function app() {
   this.mkdir('examples');
   this.componentName = _.slugify(this.bowerComponentName);
 
+  // Choose strategy by used choice
   var strategy;
-  if (this.coffee !== true) {
-    this.log(chalk.yellow('Only Coffee Script is suported. Fording Coffee script.'));
-    this.coffee = true;
-  }
-  if (this.coffee === true) {
+  if (this.options.coffee === true) {
     this.log('Generating CoffeeScript code.');
     strategy = require('./strategy/coffee.js');
   } else {
     this.log('Generating javaScript code.');
-    // TODO!
+    strategy = require('./strategy/javascript.js');
   }
 
   // Execute extrategy configuration.
   strategy.execute(this);
 
-  this.copy('_package.json', 'package.json');
+  this.template('_package.json', 'package.json');
   this.template('_bower.json', 'bower.json');
   this.copy('_index.html', 'examples/index.html');
 };

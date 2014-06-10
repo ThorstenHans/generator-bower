@@ -2,17 +2,18 @@
   "name": "<%= _.slugify(appname) %>",
   "version": "0.0.0",
   "dependencies": {},
-  "devDependencies" : {
-    "mocha" : "*",
-    "chai" : "*",
-    "sinon" : "*",
-    "grunt" : "*",
+  "devDependencies": { <% if (options.coffee) { %>
+    "mocha": "*", 
+    "chai": "*",
+    "sinon": "*",
     "grunt-contrib-coffee": "*",
-    "grunt-contrib-uglify": "*",
-    "grunt-contrib-connect": "*",
     "grunt-open": "*",
-    "grunt-contrib-watch": "*",
-    "matchdep": "*",
-    "grunt-mocha-test": "*"
+    "matchdep": "*", <% } %>
+    "grunt": "^0.4.1",
+    "grunt-contrib-uglify": "~0.4.0",
+    "load-grunt-tasks": "~0.4.0",
+    "grunt-mocha-test": "~0.11.0",
+    "grunt-contrib-connect": "0.8.0",
+    "grunt-contrib-watch": "~0.6.1"
   }
 }
