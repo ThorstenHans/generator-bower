@@ -18,6 +18,13 @@ Note: Usse --dummy to create a dummy project with dummy values.
 
 ## TODO ##
 
-1. Creating strategy to create a more organied code, generating Javascript code too.
-2. Generate JS as default and coffee script with --coffee argument.
-3. Todo more secure tests.
+Version 0.1.0
+1. Todo more secure tests.
+1.1. Test generated content files.
+1.2. Its possible to build entire generated component and test if results are ok?
+2. bowerInstall -> Development tool, not dist.
+3. concat -> Component modularization.
+4. cssmin -> When has some Css on component.
+
+Version 0.2.0
+1. Add AngularJs components generation.

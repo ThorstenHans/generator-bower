@@ -62,7 +62,7 @@ BowerGenerator.prototype.askFor = function askFor() {
       this.bowerComponentName = 'dummy';
       this.description = 'Some dummy and clean componnent.';
       // TODO: See about it!
-      this.livereloadPort = 35000;
+      this.livereloadPort = 35729;
     } else {
       this.bowerComponentName = props.bowerComponentName;
       this.description = props.description;
@@ -87,9 +87,13 @@ BowerGenerator.prototype.app = function app() {
   // Choose strategy by used choice
   var strategy;
   if (this.options.coffee === true) {
+    this.extension = 'coffee';
+
     this.log('Generating CoffeeScript code.');
     strategy = require('./strategy/coffee.js');
   } else {
+    this.extension = 'js';
+
     this.log('Generating javaScript code.');
     strategy = require('./strategy/javascript.js');
   }

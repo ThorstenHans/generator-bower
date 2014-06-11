@@ -10,9 +10,10 @@ module.exports = function (grunt) {
   require('load-grunt-tasks')(grunt);
 
   var yeomanConfig = {
-    app: 'example',
+    app: 'examples',
     src: 'src',
-    dist: 'dist'
+    dist: 'dist',
+    extension: '<%= extension %>',
   };
 
   grunt.initConfig({
@@ -29,9 +30,8 @@ module.exports = function (grunt) {
           livereload: '<%%= connect.options.livereload %>'
         },
         files: [
-          '<%$= yeoman.app %>/{,*/}*.html',
-          '.tmp/styles/{,*/}*.css',
-          '<%$= yeoman.app %>/images/{,*/}*.{png,jpg,jpeg,gif,webp,svg}'
+          '<%%= yeoman.app %>/{,**/}*.html',
+          '<%%= yeoman.app %>/{,**/}*.css'
         ]
       }
     },
@@ -44,19 +44,30 @@ module.exports = function (grunt) {
       },
       livereload: {
         options: {
-          open: 'http://localhost:<%%= connect.all.options.port%>/examples/',
-          base: [
-            '.tmp',
-            'dist/'
-          ]
+          open: 'http://localhost:<%%= connect.options.port%>',
+          base: '<%%= yeoman.app %>'
         }
+      }
+    },
+
+    copy: {
+      dist: {
+        files: [{
+          expand: true,
+          dot: true,
+          cwd: '<%%= yeoman.src %>',
+          dest: '<%%= yeoman.dist %>',
+          src: [
+            '{,**/}*.<%%= yeoman.extension %>'
+          ]
+        }]
       }
     },
 
     uglify: {
       dist: {
         files: {
-          '<%%= yeoman.dist %>/<%=slug%>.min.js' : ['<%%= yeoman.src %>/<%=slug%>.js']
+          '<%%= yeoman.dist %>/<%=slug%>.min.js' : ['<%%= yeoman.dist %>/<%=slug%>.js']
         }
       }
     },
@@ -74,10 +85,11 @@ module.exports = function (grunt) {
 
   grunt.registerTask('default', [
     'mochaTest',
+    'copy:dist',
     'uglify'
   ]);
 
-  grunt.registerTask('driven', [
+  grunt.registerTask('serve', [
     'connect:livereload',
     'watch'
   ]);
