@@ -101,6 +101,11 @@ BowerGenerator.prototype.app = function app() {
   // Execute extrategy configuration.
   strategy.execute(this);
 
+  if (this.options.dummy === true) {
+    // Create additional dummy files.
+    require('./strategy/dummy.js').createdumies(this, this.options.coffee);
+  }
+
   this.template('_package.json', 'package.json');
   this.template('_bower.json', 'bower.json');
   this.copy('_index.html', 'examples/index.html');

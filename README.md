@@ -56,14 +56,6 @@ yo bower --dummy
 
 ## TODO ##
 
-### Version 0.1.0 ###
-
-1. Todo more secure tests: Test generated content files and possibility to build entire generated component and test if results are ok?
-2. bowerInstall: Development tool to help the on who uses our generator to a
-3. concat: Component modularization.
-4. cssmin: When has some Css on component.
-5. subgenerator to add new CSS files to generating project.
-
 ### Version 0.2.0 ###
 1. Add AngularJs components generation.
 
