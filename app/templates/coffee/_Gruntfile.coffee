@@ -61,7 +61,7 @@ module.exports = (grunt) ->
 
     uglify:
       build:
-        src: '<%%=yeoman.dist %>/<%=slug%>.js'
+        src: '<%%=yeoman.dist %>/*.js'
         dest: '<%%=yeoman.dist %>/<%=slug%>.min.js'
 
     mochaTest:
